@@ -62,8 +62,8 @@ function wintersong_header_image_body_class( $classes ) {
 }
 
 //* Unregister layout settings
-genesis_unregister_layout( 'content-sidebar' );
-genesis_unregister_layout( 'sidebar-content' );
+#genesis_unregister_layout( 'content-sidebar' );
+#genesis_unregister_layout( 'sidebar-content' );
 genesis_unregister_layout( 'content-sidebar-sidebar' );
 genesis_unregister_layout( 'sidebar-sidebar-content' );
 genesis_unregister_layout( 'sidebar-content-sidebar' );
@@ -123,7 +123,7 @@ function wintersong_comments_gravatar( $args ) {
 //* Remove comment form allowed tags
 add_filter( 'comment_form_defaults', 'wintersong_remove_comment_form_allowed_tags' );
 function wintersong_remove_comment_form_allowed_tags( $defaults ) {
-	
+
 	$defaults['comment_notes_after'] = '';
 	return $defaults;
 
@@ -142,7 +142,7 @@ add_action( 'genesis_header', 'genesis_footer_markup_close', 13 );
 add_filter( 'genesis_footer_output', 'wintersong_custom_footer' );
 function wintersong_custom_footer( $output ) {
 
-	$output = sprintf( '<p>%s<a href="http://www.studiopress.com/">%s</a></p>',  __( 'Powered by ', 'wintersong' ), __( 'Genesis', 'wintersong' ) );
+	$output = sprintf( '<p>%s<a href="http://www.studiopress.com/" rel="nofollow">%s</a></p>',  __( 'Powered by ', 'wintersong' ), __( 'Genesis', 'wintersong' ) );
 	return $output;
 
 }
