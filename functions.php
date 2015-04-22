@@ -62,8 +62,8 @@ function wintersong_header_image_body_class( $classes ) {
 }
 
 //* Unregister layout settings
-#genesis_unregister_layout( 'content-sidebar' );
-#genesis_unregister_layout( 'sidebar-content' );
+genesis_unregister_layout( 'content-sidebar' );
+genesis_unregister_layout( 'sidebar-content' );
 genesis_unregister_layout( 'content-sidebar-sidebar' );
 genesis_unregister_layout( 'sidebar-sidebar-content' );
 genesis_unregister_layout( 'sidebar-content-sidebar' );
@@ -142,7 +142,8 @@ add_action( 'genesis_header', 'genesis_footer_markup_close', 13 );
 add_filter( 'genesis_footer_output', 'wintersong_custom_footer' );
 function wintersong_custom_footer( $output ) {
 
-	$output = sprintf( '<p>%s<a href="http://www.studiopress.com/" rel="nofollow">%s</a></p>',  __( 'Powered by ', 'wintersong' ), __( 'Genesis', 'wintersong' ) );
+	#$output = sprintf( '<p>%s<a href="http://www.studiopress.com/" rel="nofollow">%s</a></p>',  __( 'Powered by ', 'wintersong' ), __( 'Genesis', 'wintersong' ) );
+	$output = "<p>Powered by bourbon, beer, and sushi</p>";
 	return $output;
 
 }
@@ -153,3 +154,14 @@ genesis_register_sidebar( array(
 	'name'        => __( 'After Entry', 'wintersong' ),
 	'description' => __( 'This is the widget that appears after the entry on single posts.', 'wintersong' ),
 ) );
+
+//* Change the author meta link to twitter
+/** Customize the post info function */
+add_filter( 'genesis_post_info', 'post_info_filter' );
+function post_info_filter( $post_info ) {
+
+	$post_info = '[post_date] by <a href="https://twitter.com/chuckreynolds" rel="me">Chuck</a> [post_edit]';
+	return $post_info;
+
+}
+
