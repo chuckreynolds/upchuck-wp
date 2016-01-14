@@ -165,3 +165,17 @@ function post_info_filter( $post_info ) {
 
 }
 
+/**
+ * GTM: If "DuracellTomi's Google Tag Manager" plugin is active; call it.
+ * We do this immediately after the <body> tag
+ */
+add_action( 'genesis_before', 'upchuck_google_tag_manager', 1 );
+function upchuck_google_tag_manager() {
+
+	if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) {
+
+		gtm4wp_the_gtm_tag();
+
+	}
+
+}
